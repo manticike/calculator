@@ -3,46 +3,51 @@
   <head>
     <meta charset="UTF-8" lang="en">
     <title>Calculator</title>
-    <link rel="stylesheets" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
 
     <div id="calculator-container">
+      <div id="display">
+      <input type="text" id="user-input" placeholder="Enter something">
+      <input type="text" id="answer" placeholder="answer">
+      </div>
+      <div class="calculator-keys">
       <!--The row just beneath the screen-->
-      <div class="first-row">
-        <button>AC</button>
-        <button>DEL</button>
-        <button>%</button>
-        <button>/</button>
-      </div>
-      <!--The row containing 7, 8, 9, *-->
-      <div class="second-row">
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>*</button>
-      </div>
-
-      <!---->
-      <div class="third-row">
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>-</button>
-      </div>
-      <!---->
-      <div class="fourth-row">
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>+</button>
-      </div>
-      <!---->
-      <div class="fifth-row">
-        <button>0</button>
-        <button>.</button>
-        <button>=</button>
-      </div>
+        <div class="reset-row">
+          <button id="clear">CLEAR</button>
+          <button id="delete">DELETE</button>
+        </div>
+        <!--The row containing 7, 8, 9, *-->
+        <div class="numbers-container">
+          <div class="second-row">
+            <button class=" keys numbers">7</button>
+            <button class=" keys numbers">8</button>
+            <button class=" keys numbers">9</button>
+            <button class=" keys operations">/</button>
+          </div>
+          <!---->
+          <div class="third-row">
+            <button class=" keys numbers">4</button>
+            <button class=" keys numbers">5</button>
+            <button class=" keys numbers">6</button>
+            <button class=" keys operations">*</button>
+          </div>
+          <!---->
+          <div class="fourth-row">
+            <button class=" keys numbers">1</button>
+            <button class=" keys numbers">2</button>
+            <button class=" keys numbers">3</button>
+            <button class=" keys operations">-</button>
+          </div>
+          <!---->
+          <div class="fifth-row">
+            <button class=" keys numbers">.</button>
+            <button class=" keys numbers">0</button>
+            <button class=" keys">=</button>
+            <button class=" keys operations">+</button>
+          </div>
+        </div>
     </div>
     <script src="calculator.js"></script>
   </body>
