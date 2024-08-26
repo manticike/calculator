@@ -7,47 +7,39 @@
   </head>
   <body>
 
-    <div id="calculator-container">
-      <div id="display">
-      <input type="text" id="user-input" placeholder="Enter something">
-      <input type="text" id="answer" placeholder="answer">
+    <div id="container">
+      <div id="screen">
+        <output name="user-input" id="user-input">0</output>
+        <output name="result" id="result">0</output>
       </div>
-      <div class="calculator-keys">
-      <!--The row just beneath the screen-->
-        <div class="reset-row">
-          <button id="clear">CLEAR</button>
-          <button id="delete">DELETE</button>
+      <div id="calculator-container">
+        <div class="icons-grid">
+          <button class="key" id="clear">AC</button>
+          <button class="key operators" value="%">%</button>
+          <button class="key operators" value="/">&#247;</button>
+          <button class="key operators" value="*">&#215;</button>
+
+          <button class="key numbers" value="7">7</button>
+          <button class="key numbers" value="8">8</button>
+          <button class="key numbers" value="9">9</button>
+          <button class="key operators" value="-">-</button>
+
+          <button class="key numbers" value="4">4</button>
+          <button class="key numbers" value="5">5</button>
+          <button class="key numbers" value="6">6</button>
+          <button class="key operators" value="+">+</button>
+
+          <button class="key numbers" value="1">1</button>
+          <button class="key numbers" value="2">2</button>
+          <button class="key numbers" value="3">3</button>
+          <button class="key" id="equals" value="=">=</button>
+
+          <button class="key" id="delete">DEL</button>
+          <button class="key numbers" value="0">0</button>
+          <button class="key" id="point">.</button>
+          <button class="key">&#xf0eb;</button>
         </div>
-        <!--The row containing 7, 8, 9, *-->
-        <div class="numbers-container">
-          <div class="second-row">
-            <button class=" keys numbers">7</button>
-            <button class=" keys numbers">8</button>
-            <button class=" keys numbers">9</button>
-            <button class=" keys operations">/</button>
-          </div>
-          <!---->
-          <div class="third-row">
-            <button class=" keys numbers">4</button>
-            <button class=" keys numbers">5</button>
-            <button class=" keys numbers">6</button>
-            <button class=" keys operations">*</button>
-          </div>
-          <!---->
-          <div class="fourth-row">
-            <button class=" keys numbers">1</button>
-            <button class=" keys numbers">2</button>
-            <button class=" keys numbers">3</button>
-            <button class=" keys operations">-</button>
-          </div>
-          <!---->
-          <div class="fifth-row">
-            <button class=" keys numbers">.</button>
-            <button class=" keys numbers">0</button>
-            <button class=" keys">=</button>
-            <button class=" keys operations">+</button>
-          </div>
-        </div>
+      </div>
     </div>
     <script src="calculator.js"></script>
   </body>

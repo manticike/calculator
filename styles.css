@@ -1,67 +1,84 @@
-* {
+body {
   margin: 0;
   padding: 0;
 }
 
-#calculator-container {
-  margin: 20px;
-  background-color: aqua;
-  width: 350px;
-  height: 85vh;
-  border: 2px solid black;
-  border-radius: 8px;
+#container {
+  width: 300px;
+  height: 450px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #36454F;
+  border-radius: 10px;
 }
 
-#display{
+#screen {
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
-}
-
-#user-input, #answer {
-  padding: 16px;
-  border: none;
+  font-size: 26px;
+  height: 80px;
+  background-color: #36454F;
+  border-radius: 10px;
+  color: #ccc;
   text-align: right;
-  font-size: 20px;
+  padding-right: 10px;
 }
 
-.reset-row {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 20px 20px;
-  gap: 10px;
-}
-
-#delete, #clear {
-  font-size: 16px;
-  font-weight: bold;
-  width: 150px;
-  height: 50px;
-  border-radius: 6px;
-}
-
-#delete {
-  background-color: pink;
-}
-
-.second-row,
-.third-row,
-.fourth-row,
-.fifth-row {
-  display: flex;
-  gap: 10px;
+#user-input {
   margin-bottom: 10px;
-  justify-content: space-evenly;
+  font-size: 16px;
 }
 
-.keys {
-  width: 60px;
-  height: 60px;
+#calculator-container {
+  height: 380px;
+  background-color: #1E1E1E;
+  border-radius: 10px;
+}
+
+ #calculator output {
+  display: block;
+  margin-top: 15px;
   font-size: 20px;
   font-weight: bold;
-  border-radius: 6px;
 }
 
-.operations {
-  background-color: #B27C66;
+.icons-grid button {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  background-color: #1E1E1E;
+  color: #ccc;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.numbers:hover {
+  background-color: #36454F;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.icons-grid {
+  padding: 10px;
+}
+
+.icons-grid .operators {
+  background-color: #28282B;
+}
+
+#equals {
+  height: 100px;
+  width: 50px;
+  background: linear-gradient(45deg, #f11D28, #d84a7a);
+  border-radius: 20px;
+  font-size: 18px;
+}
+
+#clear, #delete {
+  background: linear-gradient(45deg, #f11D28, #d84a7a); 
 }
