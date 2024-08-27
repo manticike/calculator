@@ -12,84 +12,69 @@ const operatorsButton = document.querySelectorAll('.operators');
 const equalsButton = document.querySelector('#equals');
 const point = document.querySelector('#point');
 
-function add(num1, num2) {
-  return num1 + num2;
-}
 
-function subtract(num1, num2) {
-  return num1 - num2;
-}
-
-function multiply(num1, num2) {
-  return num1 * num2;
-}
-
-function divide(num1, num2) {
-  if (num2 === 0) {
-    return 'ERROR';
-  } else {
-    return num1 / num2;
-  }
-}
-
-//function percentage(num1,)
-
-function operate(num1, num2, operator) {
-  firstOperand = parseFloat(num1);
-  secondOperand = parseFloat(num2);
+function operate(first, second, operator) {
+  const num1 = parseFloat(first);
+  const num2 = parseFloat(second);
 
   switch(operator) {
     case '+':
-      return add(firstOperand, secondOperand);
+      return num1 + num2;
     case '-':
-      return subtract(firstOperand, secondOperand);
+      return num1 - num2;
     case '*':
-      return multiply(firstOperand, secondOperand);
+      return num1 * num2;
     case '/':
-      return divide(firstOperand, secondOperand);
+      if (num2 = 0){
+        return 'ERROR';
+      }else {
+        return num1 / num2;
+      }
+      case '%':
+        return num1 / 100;
     default:
       return 'ERROR';
   }
 }
 
-function populateScreen(value) {
- if (!waitingForSecondOperand) {
-  if (firstOperand === '0' || firstOperand == '') {
-    firstOperand = value;
-  } else {
-    firstOperand += value;
-  }
-  display.textContent = firstOperand + ' ' + (currentOperator || ' ');
- } else {
-  if (secondOperand === '0' || secondOperand === '') {
-    secondOperand = value;
-  } else {
-    secondOperand += value;
-  }
-  display.textContent = firstOperand + ' ' + currentOperator + ' ' + secondOperand;
- }
-}
-
 
 numbersButton.forEach(button => {
   button.addEventListener('click',function () {
-    populateScreen(button.value);
+    const number = button.value;
+
+    if (waitingForSecondOperand) {
+      secondOperand += number;
+
+      display.textContent = firstOperand + ' ' + currentOperator + ' ' + secondOperand;
+    } else {
+      firstOperand += number;
+      display.textContent = firstOperand;
+    }
   });
 });
 
 operatorsButton.forEach(button => {
-  button.addEventListener('click', function(value) {
-    if (currentOperator && !waitingForSecondOperand) {
-      currentOperator = button.value;
-      display.textContent = firstOperand + ' ' + currentOperator;
+  button.addEventListener('click', function() {
+    const newOperator = button.value;
+
+    if (firstOperand !== '' && secondOperand !== '' && currentOperator) {
+      //Perform the calculation using the first operand, second operand, and the current operator
+      const answer = operate(firstOperand, secondOperand, currentOperator);
+      result.textContent = answer;
+      display.textContent = answer + ' ' + newOperator;
+
+      firstOperand = answer;
+      // Clear the second operand
+      secondOperand = '';
+
+      currentOperator = newOperator;
     } else if (firstOperand !== '') {
-      currentOperator = button.value;
+      currentOperator = newOperator;
       waitingForSecondOperand = true;
       display.textContent = firstOperand + ' ' + currentOperator;
     }
   });
 })
-
 
 equalsButton.addEventListener('click', () => {
   answer = operate(firstOperand, secondOperand, currentOperator);
