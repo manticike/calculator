@@ -57,8 +57,14 @@ body {
   border-radius: 50%;
 }
 
-.numbers:hover {
+.numbers:hover, #point:hover{
   background-color: #36454F;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.operators:hover {
+  background-color: #F11D28 !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: scale(1.05);
 }

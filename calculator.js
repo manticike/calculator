@@ -2,6 +2,9 @@ let firstOperand = '';
 let secondOperand = '';
 let currentOperator = null;
 let waitingForSecondOperand = false;
+let hasDecimal = false;
+let hasDecimalForFirstOperand = false;
+let hasDecimalForSecondOperand = false;
 
 const display = document.querySelector('#user-input');
 const result = document.querySelector('#result');
@@ -10,7 +13,7 @@ const clearScreenButton = document.querySelector('#clear');
 const numbersButton = document.querySelectorAll('.numbers');
 const operatorsButton = document.querySelectorAll('.operators');
 const equalsButton = document.querySelector('#equals');
-const point = document.querySelector('#point');
+const pointButton = document.querySelector('#point');
 
 
 function operate(first, second, operator) {
@@ -45,8 +48,10 @@ numbersButton.forEach(button => {
     if (waitingForSecondOperand) {
       secondOperand += number;
 
+      // When the user has entered the first operand, second operand, and the operator
       display.textContent = firstOperand + ' ' + currentOperator + ' ' + secondOperand;
     } else {
+      // If the user is now entering the first operand
       firstOperand += number;
       display.textContent = firstOperand;
     }
@@ -57,12 +62,13 @@ operatorsButton.forEach(button => {
   button.addEventListener('click', function() {
     const newOperator = button.value;
 
+    pointButton.disabled = false;
     if (firstOperand !== '' && secondOperand !== '' && currentOperator) {
       //Perform the calculation using the first operand, second operand, and the current operator
       const answer = operate(firstOperand, secondOperand, currentOperator);
       result.textContent = answer;
-      display.textContent = answer + ' ' + newOperator;
 
+      display.textContent = answer + ' ' + newOperator;
       firstOperand = answer;
       // Clear the second operand
       secondOperand = '';
@@ -101,3 +107,34 @@ clearScreenButton.addEventListener('click', function() {
 });
 
 deleteButton.addEventListener('click', deleteNumber);
+
+pointButton.addEventListener('click', function () {
+  const point = pointButton.value;
+
+  if (!waitingForSecondOperand) {
+    if (!hasDecimalForFirstOperand) {
+      firstOperand += point;
+      display.textContent = firstOperand;
+      hasDecimalForFirstOperand = true;
+      //pointButton.disabled = true;
+    }
+  } else {
+    if (!hasDecimalForSecondOperand) {
+      secondOperand += point;
+      display.textContent = firstOperand + ' ' + currentOperator + ' ' + secondOperand;
+      hasDecimalForSecondOperand = true;
+      //pointButton.disabled = true;
+    }
+  }
+  pointButton.disabled = true;
+});
+
+
+document.addEventListener('keydown', function(event) {
+  const key = event.key;
+  if (key === 'Enter') {
+    operate(firstOperand, secondOperand, currentOperator);
+  } else if (key === 'Escape') {
+    this.location.reload();
+  }
+});
